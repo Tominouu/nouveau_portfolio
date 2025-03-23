@@ -3,35 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Tom Leclercq</title>
+    <title>Portfolio Créatif</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
 </head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.41"></script>
-<script src="script.js" defer></script>
 <body>
-    <header>
-        <h1>Mon Portfolio</h1>
-    </header>
+    <div class="cursor"></div>
+
+    <div class="loader">
+        <div class="loader-text">Chargement...</div>
+    </div>
+
+    <div class="back-to-top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M7 14l5-5 5 5z"/>
+        </svg>
+    </div>
 
     <section class="hero">
-        <h2>Bienvenue sur mon portfolio</h2>
-        <p>Scroll pour découvrir mes projets</p>
+        <h1 class="hero-title">Bonjour, <br>Je suis Créateur</h1>
+        <p class="hero-subtitle">Designer & Développeur Créatif</p>
     </section>
 
+    <div class="marquee">
+        <div class="marquee-inner">
+            <div class="marquee-text">PORTFOLIO CRÉATIF</div>
+            <div class="marquee-text">DESIGN & CODE</div>
+            <div class="marquee-text">PORTFOLIO CRÉATIF</div>
+            <div class="marquee-text">DESIGN & CODE</div>
+        </div>
+    </div>
+
     <section class="projects">
-        <h2>Mes Projets</h2>
-        <div class="project-card">Projet 1</div>
-        <div class="project-card">Projet 2</div>
-        <div class="project-card">Projet 3</div>
+        <h2 class="projects-title">Projets Sélectionnés</h2>
+
+        <div class="project-item">
+            <div class="project-image">
+                <img src="/api/placeholder/800/600" alt="Project 1">
+            </div>
+            <div class="project-content">
+                <div class="project-number">01</div>
+                <h3 class="project-title">Projet Alpha</h3>
+                <p class="project-description">
+                    Un design innovant pour une entreprise tech avec une attention particulière aux détails et à l'expérience utilisateur.
+                </p>
+            </div>
+        </div>
+
+        <div class="project-item">
+            <div class="project-image">
+                <img src="/api/placeholder/800/600" alt="Project 2">
+            </div>
+            <div class="project-content">
+                <div class="project-number">02</div>
+                <h3 class="project-title">Projet Bêta</h3>
+                <p class="project-description">
+                    Une expérience immersive qui repousse les limites du design web avec des animations fluides et engageantes.
+                </p>
+            </div>
+        </div>
+
+        <div class="project-item">
+            <div class="project-image">
+                <img src="/api/placeholder/800/600" alt="Project 3">
+            </div>
+            <div class="project-content">
+                <div class="project-number">03</div>
+                <h3 class="project-title">Projet Gamma</h3>
+                <p class="project-description">
+                    Une application e-commerce avec une interface minimaliste mais puissante, favorisant la conversion et l'engagement.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <h2 class="about-title">À Propos</h2>
+        <p class="about-text">
+            Je suis un designer et développeur créatif passionné par la création d'expériences web uniques et mémorables. Avec 5 ans d'expérience dans l'industrie, j'ai travaillé sur divers projets allant des sites vitrines aux applications complexes.
+        </p>
+        <p class="about-text">
+            Mon approche combine une esthétique soignée avec une fonctionnalité intuitive, créant ainsi des expériences utilisateur exceptionnelles qui répondent aux objectifs commerciaux.
+        </p>
+        <div class="skills">
+            <div class="skill">HTML/CSS</div>
+            <div class="skill">JavaScript</div>
+            <div class="skill">GSAP</div>
+            <div class="skill">React</div>
+            <div class="skill">Three.js</div>
+            <div class="skill">UI/UX Design</div>
+            <div class="skill">WebGL</div>
+        </div>
     </section>
 
     <section class="contact">
-        <h2>Contactez-moi</h2>
-        <p>email@example.com</p>
+        <h2 class="contact-title">Contact</h2>
+        <p class="contact-text">
+            Vous avez un projet intéressant en tête ? Je serais ravi d'en discuter et de voir comment nous pourrions collaborer.
+        </p>
+        <form class="contact-form">
+            <div class="form-group">
+                <input type="text" placeholder="Votre Nom" required>
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="Votre Email" required>
+            </div>
+            <div class="form-group">
+                <textarea placeholder="Votre Message" required></textarea>
+            </div>
+            <button type="submit">Envoyer</button>
+        </form>
     </section>
 
+    <footer class="footer">
+        <p>© 2025 Portfolio Créatif. Tous droits réservés.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/ScrollTrigger.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
