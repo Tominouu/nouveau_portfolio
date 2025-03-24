@@ -82,7 +82,7 @@ const marqueeAnimation = () => {
     
     tl.to('.marquee', {
         opacity: 1,
-        duration: 1
+        duration: 0.3 // Réduit de 1 à 0.3
     })
     .to('.marquee-text', {
         rotationY: 45,
@@ -166,6 +166,7 @@ const aboutAnimation = () => {
         scrollTrigger: {
             trigger: '.about',
             start: "top 80%",
+            end: "bottom 20%",
             toggleActions: "play none none reverse"
         }
     });
@@ -175,17 +176,18 @@ const aboutAnimation = () => {
     gsap.set('.skills', { opacity: 0 });
     
     tl.from('.about-title', {
-        duration: 1.5,
+        duration: 1.2,
         y: 100,
+        rotationX: -45,
         opacity: 0,
-        ease: "power3.out"
+        ease: "back.out(1.7)"
     })
     .to('.about-text', {
-        duration: 1,
+        duration: 1.2,
         y: 0,
         opacity: 1,
-        stagger: 0.2,
-        ease: "power2.out"
+        stagger: 0.3,
+        ease: "power4.out"
     })
     .to('.skills', {
         duration: 0.8,
@@ -193,11 +195,34 @@ const aboutAnimation = () => {
         ease: "power2.out"
     })
     .from('.skills .skill', {
-        duration: 0.8,
-        y: 30,
+        duration: 1,
+        scale: 0,
+        rotation: -180,
         opacity: 0,
         stagger: 0.1,
-        ease: "back.out(1.7)"
+        ease: "elastic.out(1, 0.3)",
+        transformOrigin: "center center"
+    });
+    
+    // Animation au survol des skills
+    document.querySelectorAll('.skill').forEach(skill => {
+        skill.addEventListener('mouseenter', () => {
+            gsap.to(skill, {
+                scale: 1.1,
+                backgroundColor: "rgba(255, 255, 255, 0.2)",
+                duration: 0.3,
+                ease: "power2.out"
+            });
+        });
+        
+        skill.addEventListener('mouseleave', () => {
+            gsap.to(skill, {
+                scale: 1,
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+                duration: 0.3,
+                ease: "power2.out"
+            });
+        });
     });
     
     return tl;
@@ -209,6 +234,7 @@ const contactAnimation = () => {
         scrollTrigger: {
             trigger: '.contact',
             start: "top 80%",
+            end: "bottom 20%",
             toggleActions: "play none none reverse"
         }
     });
@@ -216,30 +242,66 @@ const contactAnimation = () => {
     // Réinitialisation des états initiaux
     gsap.set('.contact-text', { opacity: 0, y: 30 });
     gsap.set('.contact-form', { opacity: 0 });
+    gsap.set('.form-group', { clipPath: "polygon(0 0, 0 0, 0 100%, 0 100%)" });
     
     tl.from('.contact-title', {
-        duration: 1,
+        duration: 1.2,
         y: 50,
+        rotationY: 90,
         opacity: 0,
-        ease: "power3.out"
+        ease: "power4.out"
     })
     .to('.contact-text', {
-        duration: 0.8,
+        duration: 1,
         y: 0,
         opacity: 1,
-        ease: "power2.out"
+        ease: "power3.out"
     })
     .to('.contact-form', {
         duration: 0.8,
         opacity: 1,
         ease: "power2.out"
     })
-    .from('.contact-form .form-group', {
-        duration: 0.6,
-        y: 20,
+    .to('.form-group', {
+        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power4.inOut"
+    })
+    .from('.form-group input, .form-group textarea', {
+        x: -50,
         opacity: 0,
+        duration: 0.6,
         stagger: 0.1,
         ease: "power2.out"
+    }, "-=0.4")
+    .from('button[type="submit"]', {
+        scale: 0,
+        rotation: 180,
+        opacity: 0,
+        duration: 0.8,
+        ease: "back.out(1.7)"
+    });
+    
+    // Animation des champs de formulaire au focus
+    document.querySelectorAll('.form-group input, .form-group textarea').forEach(input => {
+        input.addEventListener('focus', () => {
+            gsap.to(input, {
+                scale: 1.02,
+                borderColor: "white",
+                duration: 0.3,
+                ease: "power2.out"
+            });
+        });
+        
+        input.addEventListener('blur', () => {
+            gsap.to(input, {
+                scale: 1,
+                borderColor: "rgba(255, 255, 255, 0.3)",
+                duration: 0.3,
+                ease: "power2.out"
+            });
+        });
     });
     
     return tl;
