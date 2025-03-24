@@ -82,7 +82,7 @@ const marqueeAnimation = () => {
     
     tl.to('.marquee', {
         opacity: 1,
-        duration: 0.3 // Réduit de 1 à 0.3
+        duration: 0.1 // Réduit de 1 à 0.3
     })
     .to('.marquee-text', {
         rotationY: 45,
@@ -381,19 +381,27 @@ const parallaxAnimation = () => {
 
 // Animation du titre principal avec distorsion
 const heroTitleAnimation = () => {
-    gsap.to('.hero-title', {
-        y: -150,
-        scale: 0.8,
-        opacity: 0.2,
-        skewX: 15,
-        ease: "none",
-        scrollTrigger: {
-            trigger: '.hero',
-            start: "top top",
-            end: "bottom top",
-            scrub: true
+    gsap.fromTo('.hero-title', 
+        {
+            y: 0,
+            scale: 1,
+            opacity: 1,
+            skewX: 0
+        },
+        {
+            y: -150,
+            scale: 0.8, 
+            opacity: 0.2,
+            skewX: 15,
+            ease: "none",
+            scrollTrigger: {
+                trigger: '.hero',
+                start: "top top", 
+                end: "bottom top",
+                scrub: true,
+            }
         }
-    });
+    );
 };
 
 // Animation du titre des projets avec morphing
