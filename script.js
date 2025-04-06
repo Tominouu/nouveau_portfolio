@@ -79,7 +79,14 @@ const loadingAnimation = () => {
         y: 50,
         opacity: 0,
         ease: "power2.out"
-    }, "-=0.5");
+    }, "-=0.5")
+    .from('.photo-button', {
+        duration: 1,
+        scale: 0.5,
+        y: 50,
+        opacity: 0,
+        ease: "back.out(1.7)"
+    }, "-=0.3");
     
     return tl;
 };
