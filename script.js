@@ -49,6 +49,13 @@ gsap.ticker.add(() => {
 const loadingAnimation = () => {
     const tl = gsap.timeline();
     
+    // Réinitialisation de l'état initial du bouton
+    gsap.set('.photo-button', {
+        opacity: 0,
+        y: 50,
+        scale: 0.5
+    });
+    
     tl.to('.loader-text', {
         textContent: "100%",
         duration: 1.5,
@@ -80,12 +87,12 @@ const loadingAnimation = () => {
         opacity: 0,
         ease: "power2.out"
     }, "-=0.5")
-    .from('.photo-button', {
-        duration: 1,
-        scale: 0.5,
-        y: 50,
-        opacity: 0,
-        ease: "back.out(1.7)"
+    .to('.photo-button', {
+        duration: 1.2,
+        scale: 1,
+        y: 0,
+        opacity: 1,
+        ease: "elastic.out(1, 0.5)"
     }, "-=0.3");
     
     return tl;
@@ -399,6 +406,12 @@ const hoverDistortionEffect = () => {
 
 // Initialisation des animations
 window.addEventListener('DOMContentLoaded', () => {
+    // Initialisation du bouton photo
+    gsap.set('.photo-button', {
+        opacity: 0,
+        y: 50
+    });
+
     const masterTimeline = gsap.timeline();
     
     masterTimeline
